@@ -28,6 +28,7 @@ import { useRouter } from 'vue-router';
 import Cookie from 'js-cookie';
 import { message } from 'ant-design-vue';
 import LoginSrv from '../../services/CMS/auth.service';
+import axios from 'axios';
 
 
 const loading = ref(false);
@@ -40,16 +41,16 @@ const onFinish = async (values) => {
     loading.value = true;
     try {
         const res = await LoginSrv.login(values);
-        if (res.data.success) {
+        if (res.data.msg == 'success') {
             message.success('Login success!');
-            await Cookie.set("access_token", `Bearer ${res.data.data.token}`);
+            await Cookie.set("access_token", `${res.data.data.token}`);
+            router.push({ name: 'flashnews' });
         }
     } catch (error) {
         message.error('Sai thông tin đăng nhập');
         console.error('Error fetching tag:', error);
     } finally {
         loading.value = false;
-        // router.push({ name: 'admin' });
     }
 };
 </script>

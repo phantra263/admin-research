@@ -16,18 +16,14 @@ h1 {
   line-height: 1.1;
 }
 
-button {
-  border-radius: 8px;
-  border: 1px solid transparent;
-  padding: 0.6em 1.2em;
-  font-size: 1em;
-  font-weight: 500;
-  font-family: inherit;
-  background-color: #1a1a1a;
-  cursor: pointer;
-  transition: border-color 0.25s;
-}
 
+
+.line-clamp-2 {
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
 
 #app {
   // max-width: 1280px;
@@ -232,4 +228,13 @@ body {
   .ant-pagination-item-link {
     color: #F0B90B !important;
   }
+}
+
+// custom editor
+.ql-snow .ql-tooltip {
+  z-index: 1;
+}
+
+.ql-editor {
+  min-height: 150px;
 }

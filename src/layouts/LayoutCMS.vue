@@ -1,20 +1,21 @@
 <template>
     <a-layout style="overflow-x: hidden" class="layout-cms">
         <a-layout-sider v-model:collapsed="collapsed" :trigger="null" collapsible class="custom-sider"
+            :style="{ overflow: 'auto', height: '100vh', position: 'fixed', left: 0, top: 0, bottom: 0 }"
             :class="{ collapsed: !collapsed, uncollapsed: collapsed }">
             <div class="logo">LOGO</div>
             <a-menu theme="dark" mode="inline">
                 <router-link class="ant-menu-item" exact exactActiveClass="ant-menu-item-selected" to="/">
                     <ScheduleOutlined />
-                    <span>Entities</span>
+                    <span>Flash News</span>
                 </router-link>
-                <router-link class="ant-menu-item" exact exactActiveClass="ant-menu-item-selected" to="/banner">
+                <router-link class="ant-menu-item" exact exactActiveClass="ant-menu-item-selected" to="/advertising">
                     <PictureOutlined />
-                    <span>Banner</span>
+                    <span>Advertising</span>
                 </router-link>
             </a-menu>
         </a-layout-sider>
-        <a-layout>
+        <a-layout :style="{ marginLeft: !collapsed ? '200px' : '75px' }">
             <a-layout-header style="background: #fff; padding: 0">
                 <div class="wrap-header">
                     <menu-unfold-outlined v-if="collapsed" class="trigger" @click="() => (collapsed = !collapsed)" />
@@ -64,15 +65,8 @@ const accesstoken = Cookie.get("access_token");
 const currentUser = ref(accesstoken ? accesstoken : '');
 
 const handleLogout = async () => {
-    try {
-        const res = await LoginSrv.logout();
-        if (res.data) {
-            await Cookie.remove("access_token");
-            router.push({ name: 'login' });
-        }
-    } catch (error) {
-        console.error('Error logout:', error);
-    }
+    await Cookie.remove("access_token");
+    router.push({ name: 'login' });
 }
 </script>
 <style scoped lang="scss">

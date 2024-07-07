@@ -7,8 +7,8 @@ const routes = [
         path: "/",
         component: LayoutCMS,
         children: [
-            { path: '', name: 'admin', component: () => import('./pages/cms/EntityCms.vue') },
-            { path: 'banner', component: () => import('./pages/cms/BannerCms.vue') }
+            { path: '', name: 'flashnews', component: () => import('./pages/cms/FlashNewsCms.vue') },
+            { path: 'advertising', component: () => import('./pages/cms/AdvertisingCms.vue') }
         ]
     },
     {
@@ -28,7 +28,7 @@ const router = createRouter({
 
 router.beforeEach((to, from, next) => {
     const isAuthenticated = Cookie.get("access_token");
-    if (!isAuthenticated && to.path.includes('admin')) {
+    if (!isAuthenticated && !to.name.includes('login')) {
         // Redirect to the login route if not authenticated
         next({ name: 'login' });
     } else {
