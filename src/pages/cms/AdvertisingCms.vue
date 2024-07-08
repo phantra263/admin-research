@@ -112,7 +112,7 @@ const columnsAdvertising = [
     {
         title: 'STT',
         key: 'stt',
-        width: 60,
+        width: 40,
         align: 'center'
     },
     {
@@ -125,19 +125,19 @@ const columnsAdvertising = [
         title: 'Content',
         dataIndex: 'content',
         key: 'content',
-        width: 300
+        width: 200
     },
     {
         title: 'Banner link',
         dataIndex: 'link',
         key: 'link',
-        width: 300
+        width: 200
     },
     {
         title: 'Thumbnail',
         dataIndex: 'thumbnail',
         key: 'thumbnail',
-        width: 150
+        width: 100
     },
     {
         dataIndex: 'action',
