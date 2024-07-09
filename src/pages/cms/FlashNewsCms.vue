@@ -13,6 +13,9 @@
                 <template v-if="column.key === 'stt'">
                     {{ index + 1 }}
                 </template>
+                <template v-if="column.key === 'time'">
+                    {{ $filters.formatDate(record.time, 'YYYY-MM-DD HH:mm:ss') }}
+                </template>
                 <template v-if="column.key === 'title'">
                     <div class=" line-clamp-2">{{ record.data?.title }}</div>
                 </template>
@@ -122,20 +125,27 @@ const columnsFlashNews = [
     {
         title: 'STT',
         key: 'stt',
-        width: 60,
+        width: 40,
+        align: 'center'
+    },
+    {
+        title: 'Created',
+        dataIndex: 'time',
+        key: 'time',
+        width: 130,
         align: 'center'
     },
     {
         title: 'Title',
         dataIndex: 'data',
         key: 'title',
-        width: 200
+        width: 150
     },
     {
         title: 'Content',
         dataIndex: 'content',
         key: 'content',
-        width: 300
+        width: 200
     },
     {
         title: 'Thumbnail',
